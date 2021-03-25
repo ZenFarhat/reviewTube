@@ -27,6 +27,7 @@ function Nav() {
           console.log(searchedMovie);
         })
         .catch((error) => console.error(`Error: ${error}`));
+      getSearch("");
     }
   };
 

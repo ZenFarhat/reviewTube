@@ -18,6 +18,8 @@ function MovieList(props) {
     getAllMovies();
   }, [pageNumber]);
 
+  const searchResults = props.search;
+
   const getAllMovies = () => {
     axios
       .get(url)
@@ -28,8 +30,6 @@ function MovieList(props) {
       })
       .catch((error) => console.error(`Error: ${error}`));
   };
-
-  const searchResults = props.search;
 
   const decrementPage = () => {
     if (pageNumber <= 1) {
