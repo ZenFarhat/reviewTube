@@ -16,6 +16,7 @@ function Nav() {
 
   const handleSearch = () => {
     if (search === "") {
+      setResults([]);
       return;
     } else {
       axios
