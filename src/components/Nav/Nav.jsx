@@ -6,6 +6,7 @@ import "./Nav.css";
 function Nav() {
   const [search, getSearch] = useState("");
   const [searchResults, setResults] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
   const img_url = "https://image.tmdb.org/t/p/w200/";
   const API_KEY = "2e3fbcccb4701cc502ea1a888039b2c8";
   const SEARCH_URL =
@@ -17,6 +18,7 @@ function Nav() {
   const handleSearch = () => {
     if (search === "") {
       setResults([]);
+      setHasSearched(false);
       return;
     } else {
       axios
@@ -27,7 +29,7 @@ function Nav() {
           console.log(searchedMovie);
         })
         .catch((error) => console.error(`Error: ${error}`));
-      getSearch("");
+      setHasSearched(true);
     }
   };
 
@@ -67,6 +69,7 @@ function Nav() {
             </div>
           );
         })}
+        hasSearched={hasSearched}
       />
     </div>
   );
