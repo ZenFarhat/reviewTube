@@ -45,7 +45,6 @@ function MovieList(props) {
 
   return (
     <div className='movieList'>
-      {/* t */}
       <div className='page__buttons'>
         <button className='decrementPage pageButton' onClick={decrementPage}>
           Prev Page
