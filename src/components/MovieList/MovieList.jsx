@@ -18,7 +18,7 @@ function MovieList(props) {
     getAllMovies();
   }, [pageNumber]);
 
-  const searchResults = props.search;
+  var searchResults = props.search;
 
   const getAllMovies = () => {
     axios
@@ -55,28 +55,9 @@ function MovieList(props) {
         </button>
       </div>
       <div className='movies'>
-        {searchResults}
-        {movieList.map((movie) => {
-          return (
-            <div className='movie' key={movie.id}>
-              <img
-                src={`${img_url + movie.backdrop_path}`}
-                alt=''
-                className='movie__backdrop'
-              />
-              <div className='movie__container'>
-                <img
-                  src={`${img_url + movie.poster_path}`}
-                  alt='movie_poster'
-                  className='movie__poster'
-                />
-
-                <p>{movie.title}</p>
-                <p>Rating: {movie.vote_average}</p>
-              </div>
-            </div>
-          );
-        })}
+        {searchResults === null
+          ? 
+          : searchResults}
       </div>
       <div className='page__buttons'>
         <button className='decrementPage pageButton' onClick={decrementPage}>
