@@ -84,10 +84,35 @@
   border: 1px solid black;
 }
 
+.search__header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
 .search__results {
   color: white;
 }
 
 .refresh__button {
+  width: 250px;
+  height: 50px;
+  font-size: 2rem;
+  border-radius: 20px;
+  background-color: #e50914;
   color: white;
+  border: none;
+}
+
+.refresh__button:hover {
+  cursor: pointer;
+  background-color: orange;
+}
+
+.refresh__button:active {
+  transform: scale(0.98);
+}
+
+.refresh__button:focus {
+  outline: none;
 }

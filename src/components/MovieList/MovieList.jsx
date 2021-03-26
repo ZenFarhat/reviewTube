@@ -56,7 +56,9 @@ function MovieList(props) {
         <>
           <div className='search__header'>
             <h1 className='search__results'>Your search results</h1>
-            <button onClick={refreshPage}>Refresh</button>
+            <button onClick={refreshPage} className='refresh__button'>
+              Refresh
+            </button>
           </div>
           <hr />
           <div className='movies'>{searchResults}</div>
