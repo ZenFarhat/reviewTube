@@ -47,12 +47,9 @@ function MovieList(props) {
 
   function refreshPage() {
     setPage(1);
+    setOverview(false);
     window.location.reload();
   }
-
-  const displayOverview = () => {
-    setOverview(!showOverview);
-  };
 
   return (
     <div className='movieList'>
@@ -102,11 +99,17 @@ function MovieList(props) {
 
                     <p>{movie.title}</p>
                     <p>Rating: {movie.vote_average}</p>
-                    <button onClick={displayOverview}>Show Overview</button>
+                    <button
+                      onClick={() => {
+                        setOverview(!showOverview);
+                      }}
+                    >
+                      Show Overview
+                    </button>
                   </div>
                   <div
                     className={
-                      showOverview ? "movie__overview" : "movie__overview shown"
+                      showOverview ? "movie__overview shown" : "movie__overview"
                     }
                   >
                     <p className='overview'>{movie.overview}</p>
