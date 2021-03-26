@@ -9,7 +9,7 @@
   width: 40%;
   background-color: white;
   border-radius: 20px;
-  margin: 0 auto;
+  margin: 20px auto;
   justify-content: space-around;
   align-items: center;
 }
@@ -82,4 +82,12 @@
   max-width: 230px;
   min-width: 230px;
   border: 1px solid black;
+}
+
+.search__results {
+  color: white;
+}
+
+.refresh__button {
+  color: white;
 }

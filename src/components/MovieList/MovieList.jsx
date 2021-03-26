@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./MovieList.css";
+import RefreshIcon from "@material-ui/icons/Refresh";
 
 function MovieList(props) {
   const [movieList, getMovies] = useState([]);
@@ -16,7 +17,7 @@ function MovieList(props) {
 
   useEffect(() => {
     getAllMovies();
-  }, [pageNumber]);
+  }, [pageNumber, hasSearched]);
 
   const searchResults = props.search;
   const getAllMovies = () => {
@@ -30,7 +31,8 @@ function MovieList(props) {
       .catch((error) => console.error(`Error: ${error}`));
   };
 
-  const hasSearched = props.hasSearched;
+  var hasSearched = props.hasSearched;
+
   const decrementPage = () => {
     if (pageNumber <= 1) {
       return;
@@ -43,21 +45,41 @@ function MovieList(props) {
     setPage((prevPage) => prevPage + 1);
   };
 
+  function refreshPage() {
+    setPage(1);
+    window.location.reload();
+  }
+
   return (
     <div className='movieList'>
-      <div className='page__buttons'>
-        <button className='decrementPage pageButton' onClick={decrementPage}>
-          Prev Page
-        </button>
-        <p>{pageNumber}</p>
-        <button className='incrementPage pageButton' onClick={incrementPage}>
-          Next Page
-        </button>
-      </div>
-      <div className='movies'>
-        {hasSearched
-          ? searchResults
-          : movieList.map((movie) => {
+      {hasSearched ? (
+        <>
+          <div className='search__header'>
+            <h1 className='search__results'>Your search results</h1>
+            <button onClick={refreshPage}>Refresh</button>
+          </div>
+          <hr />
+          <div className='movies'>{searchResults}</div>
+        </>
+      ) : (
+        <>
+          <div className='page__buttons'>
+            <button
+              className='decrementPage pageButton'
+              onClick={decrementPage}
+            >
+              Prev Page
+            </button>
+            <p>{pageNumber}</p>
+            <button
+              className='incrementPage pageButton'
+              onClick={incrementPage}
+            >
+              Next Page
+            </button>
+          </div>
+          <div className='movies'>
+            {movieList.map((movie) => {
               return (
                 <div className='movie' key={movie.id}>
                   <img
@@ -78,16 +100,24 @@ function MovieList(props) {
                 </div>
               );
             })}
-      </div>
-      <div className='page__buttons'>
-        <button className='decrementPage pageButton' onClick={decrementPage}>
-          Prev Page
-        </button>
-        <p>{pageNumber}</p>
-        <button className='incrementPage pageButton' onClick={incrementPage}>
-          Next Page
-        </button>
-      </div>
+          </div>
+          <div className='page__buttons'>
+            <button
+              className='decrementPage pageButton'
+              onClick={decrementPage}
+            >
+              Prev Page
+            </button>
+            <p>{pageNumber}</p>
+            <button
+              className='incrementPage pageButton'
+              onClick={incrementPage}
+            >
+              Next Page
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
