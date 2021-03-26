@@ -125,11 +125,7 @@
   padding: 0.5rem;
   position: absolute;
   overflow: auto;
-  opacity: 0;
-}
-
-.movie__overview.shown {
-  opacity: 100%;
+  display: none;
 }
 
 /* SCROLLBAR */

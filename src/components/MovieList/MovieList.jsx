@@ -5,7 +5,6 @@ import "./MovieList.css";
 function MovieList(props) {
   const [movieList, getMovies] = useState([]);
   const [pageNumber, setPage] = useState(1);
-  const [showOverview, setOverview] = useState(false);
 
   const api_key = "2e3fbcccb4701cc502ea1a888039b2c8";
   const url =
@@ -25,6 +24,10 @@ function MovieList(props) {
       .get(url)
       .then((res) => {
         const allMovies = res.data.results;
+        allMovies.map((x) => {
+          x.showOverview = false;
+          return x;
+        });
         getMovies(allMovies);
         console.log(allMovies);
       })
@@ -45,9 +48,15 @@ function MovieList(props) {
     setPage((prevPage) => prevPage + 1);
   };
 
+  const displayOverview = (movie) => {
+    movie.showOverview = !movie.showOverview;
+    let el = document.getElementById(movie.id);
+    el.style.display = movie.showOverview ? "block" : "none";
+    console.log(movie.showOverview);
+  };
+
   function refreshPage() {
     setPage(1);
-    setOverview(false);
     window.location.reload();
   }
 
@@ -99,13 +108,11 @@ function MovieList(props) {
 
                     <p>{movie.title}</p>
                     <p>Rating: {movie.vote_average}</p>
-                    <button>Show Overview</button>
+                    <button onClick={() => displayOverview(movie)}>
+                      Show Overview
+                    </button>
                   </div>
-                  <div
-                    className={
-                      showOverview ? "movie__overview shown" : "movie__overview"
-                    }
-                  >
+                  <div className='movie__overview' id={movie.id}>
                     <p className='overview'>{movie.overview}</p>
                   </div>
                 </div>
