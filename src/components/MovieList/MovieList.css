@@ -61,7 +61,6 @@
   padding: 1rem;
   position: relative;
   overflow: none;
-  z-index: -2;
 }
 
 .movie__backdrop {
@@ -116,3 +115,21 @@
 .refresh__button:focus {
   outline: none;
 }
+
+.movie__overview {
+  background-color: white;
+  max-width: 250px;
+  height: 200px;
+  border-radius: 20px;
+  border: 1px solid black;
+  padding: 0.5rem;
+  position: absolute;
+  overflow: auto;
+  opacity: 0;
+}
+
+.movie__overview.shown {
+  opacity: 100%;
+}
+
+/* SCROLLBAR */

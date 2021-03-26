@@ -66,6 +66,9 @@ function Nav() {
                 <p>{result.title}</p>
                 <p>Rating: {result.vote_average}</p>
               </div>
+              <div className='movie__overview'>
+                <p className='overview'>{result.overview}</p>
+              </div>
             </div>
           );
         })}

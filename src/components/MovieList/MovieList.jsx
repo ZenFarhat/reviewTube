@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./MovieList.css";
-import RefreshIcon from "@material-ui/icons/Refresh";
 
 function MovieList(props) {
   const [movieList, getMovies] = useState([]);
   const [pageNumber, setPage] = useState(1);
+  const [showOverview, setOverview] = useState(false);
 
   const api_key = "2e3fbcccb4701cc502ea1a888039b2c8";
   const url =
@@ -49,6 +49,10 @@ function MovieList(props) {
     setPage(1);
     window.location.reload();
   }
+
+  const displayOverview = () => {
+    setOverview(!showOverview);
+  };
 
   return (
     <div className='movieList'>
@@ -98,6 +102,14 @@ function MovieList(props) {
 
                     <p>{movie.title}</p>
                     <p>Rating: {movie.vote_average}</p>
+                    <button onClick={displayOverview}>Show Overview</button>
+                  </div>
+                  <div
+                    className={
+                      showOverview ? "movie__overview" : "movie__overview shown"
+                    }
+                  >
+                    <p className='overview'>{movie.overview}</p>
                   </div>
                 </div>
               );
