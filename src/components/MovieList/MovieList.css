@@ -128,4 +128,32 @@
   display: none;
 }
 
-/* SCROLLBAR */
+@media only screen and (max-width: 768px) {
+  .page__buttons {
+    width: 100%;
+  }
+
+  .pageButton {
+    height: 100%;
+    font-size: 1.2rem;
+    border: 1px solid black;
+  }
+
+  .search__header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  .search__results {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .refresh__button {
+    width: 150px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}

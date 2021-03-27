@@ -18,8 +18,9 @@ nav {
   font-size: 2rem;
 }
 
-.searchbar {
+.searchbar__container {
   display: flex;
+  align-items: center;
   flex: 5;
 }
 
@@ -27,31 +28,24 @@ nav {
   background-color: #e50914;
 }
 
-.searchbar input,
-select,
+.nav__searchBar,
 .nav__searchButton {
   font-size: 1.5rem;
   padding: 0.5rem;
 }
 
-.searchbar input:focus,
-select:focus,
+.nav__searchBar:focus,
 .nav__searchButton:focus {
   outline: none;
 }
 
-.searchbar input {
+.nav__searchBar {
   width: 80%;
   height: 50px;
   border: none;
 }
 
-.searchbar select {
-  border-radius: 20px 0 0 20px;
-  border: none;
-}
-
-.searchbar .nav__searchButton {
+.nav__searchButton {
   border-radius: 0 20px 20px 0;
   border: none;
 }
@@ -59,4 +53,38 @@ select:focus,
 .nav__searchButton:hover {
   cursor: pointer;
   background-color: orange;
+}
+
+@media only screen and (max-width: 768px) {
+  nav {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1.5rem 0;
+  }
+
+  .nav__logo {
+    font-size: 1.5rem;
+  }
+
+  .nav__searchBar,
+  .nav__searchButton {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav__searchBar {
+    width: 80%;
+    height: 25px;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    margin: 10px 0;
+  }
+
+  .nav__searchButton {
+    height: 40px;
+  }
 }

@@ -48,10 +48,11 @@ function Nav() {
     <div className='appContainer'>
       <nav>
         <div className='nav__logo'>ReviewTube</div>
-        <div className='searchbar'>
+        <div className='searchbar__container'>
           <input
             type='text'
             onChange={(event) => getSearch(event.target.value)}
+            className='nav__searchBar'
           />
           <button className='nav__searchButton' onClick={handleSearch}>
             Search
