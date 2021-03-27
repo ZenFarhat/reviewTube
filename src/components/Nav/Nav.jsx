@@ -25,12 +25,23 @@ function Nav() {
         .get(SEARCH_URL)
         .then((res) => {
           const searchedMovie = res.data.results;
+          searchedMovie.map((x) => {
+            x.showOverview = false;
+            return x;
+          });
           setResults(searchedMovie);
           console.log(searchedMovie);
         })
         .catch((error) => console.error(`Error: ${error}`));
       setHasSearched(true);
     }
+  };
+
+  const displayOverview = (movie) => {
+    movie.showOverview = !movie.showOverview;
+    let el = document.getElementById(movie.id);
+    el.style.display = movie.showOverview ? "block" : "none";
+    console.log(movie.showOverview);
   };
 
   return (
@@ -65,8 +76,11 @@ function Nav() {
 
                 <p>{result.title}</p>
                 <p>Rating: {result.vote_average}</p>
+                <button onClick={() => displayOverview(result)}>
+                  Show Overview
+                </button>
               </div>
-              <div className='movie__overview'>
+              <div className='movie__overview' id={result.id}>
                 <p className='overview'>{result.overview}</p>
               </div>
             </div>
