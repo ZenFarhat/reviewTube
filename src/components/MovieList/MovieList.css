@@ -128,6 +128,28 @@
   display: none;
 }
 
+.overviewButton {
+  margin: 10px 0;
+  width: 90%;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid black;
+  background-color: #e50914;
+  color: white;
+}
+
+.overviewButton:hover {
+  cursor: pointer;
+}
+
+.overviewButton:active {
+  transform: scale(0.98);
+}
+
+.overviewButton:focus {
+  outline: none;
+}
+
 @media only screen and (max-width: 768px) {
   .page__buttons {
     width: 100%;

@@ -16,6 +16,8 @@ nav {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  font-style: italic;
+  margin: 0 10px;
 }
 
 .searchbar__container {
@@ -31,7 +33,6 @@ nav {
 .nav__searchBar,
 .nav__searchButton {
   font-size: 1.5rem;
-  padding: 0.5rem;
 }
 
 .nav__searchBar:focus,
@@ -41,13 +42,14 @@ nav {
 
 .nav__searchBar {
   width: 80%;
-  height: 50px;
+  height: 40px;
   border: none;
 }
 
 .nav__searchButton {
   border-radius: 0 20px 20px 0;
   border: none;
+  height: 43px;
 }
 
 .nav__searchButton:hover {

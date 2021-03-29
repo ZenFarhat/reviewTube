@@ -108,7 +108,10 @@ function MovieList(props) {
 
                     <p>{movie.title}</p>
                     <p>Rating: {movie.vote_average}</p>
-                    <button onClick={() => displayOverview(movie)}>
+                    <button
+                      className='overviewButton'
+                      onClick={() => displayOverview(movie)}
+                    >
                       Show Overview
                     </button>
                   </div>

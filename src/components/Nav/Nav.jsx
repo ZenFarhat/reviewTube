@@ -77,7 +77,10 @@ function Nav() {
 
                 <p>{result.title}</p>
                 <p>Rating: {result.vote_average}</p>
-                <button onClick={() => displayOverview(result)}>
+                <button
+                  className='overviewButton'
+                  onClick={() => displayOverview(result)}
+                >
                   Show Overview
                 </button>
               </div>
