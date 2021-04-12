@@ -37,11 +37,11 @@ function Nav() {
     }
   };
 
-  const displayOverview = (movie) => {
-    movie.showOverview = !movie.showOverview;
-    let el = document.getElementById(movie.id);
-    el.style.display = movie.showOverview ? "block" : "none";
-    console.log(movie.showOverview);
+  const displayOverview = (result) => {
+    result.showOverview = !result.showOverview;
+    let el = document.getElementById(result.id);
+    el.style.display = result.showOverview ? "block" : "none";
+    console.log(result.showOverview);
   };
 
   return (
@@ -64,28 +64,22 @@ function Nav() {
           return (
             <div className='movie' key={result.id}>
               <img
-                src={`${img_url + result.backdrop_path}`}
-                alt=''
-                className='movie__backdrop'
+                src={`${img_url + result.poster_path}`}
+                alt='movie_poster'
+                className='movie__poster'
               />
-              <div className='movie__container'>
-                <img
-                  src={`${img_url + result.poster_path}`}
-                  alt='movie_poster'
-                  className='movie__poster'
-                />
-
-                <p>{result.title}</p>
-                <p>Rating: {result.vote_average}</p>
-                <button
-                  className='overviewButton'
-                  onClick={() => displayOverview(result)}
-                >
-                  Show Overview
-                </button>
-              </div>
+              <button
+                className='overviewButton'
+                onClick={() => displayOverview(result)}
+              >
+                Show Overview
+              </button>
               <div className='movie__overview' id={result.id}>
+                <p className='movie__title'>{result.title}</p>
+                <hr className='purpleHr' />
                 <p className='overview'>{result.overview}</p>
+                <hr className='purpleHr' />
+                <p>Rating: {result.vote_average}</p>
               </div>
             </div>
           );

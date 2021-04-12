@@ -14,10 +14,6 @@ function MovieList(props) {
     pageNumber;
   const img_url = "https://image.tmdb.org/t/p/w200/";
 
-  useEffect(() => {
-    getAllMovies();
-  }, [pageNumber, hasSearched]);
-
   const searchResults = props.search;
   const getAllMovies = () => {
     axios
@@ -35,6 +31,9 @@ function MovieList(props) {
   };
 
   var hasSearched = props.hasSearched;
+  useEffect(() => {
+    getAllMovies();
+  }, [pageNumber, hasSearched]);
 
   const decrementPage = () => {
     if (pageNumber <= 1) {
@@ -82,7 +81,7 @@ function MovieList(props) {
             >
               Prev Page
             </button>
-            <p>{pageNumber}</p>
+            <p className='page__number'>{pageNumber}</p>
             <button
               className='incrementPage pageButton'
               onClick={incrementPage}
@@ -95,28 +94,23 @@ function MovieList(props) {
               return (
                 <div className='movie' key={movie.id}>
                   <img
-                    src={`${img_url + movie.backdrop_path}`}
-                    alt=''
-                    className='movie__backdrop'
+                    src={`${img_url + movie.poster_path}`}
+                    alt='movie_poster'
+                    className='movie__poster'
                   />
-                  <div className='movie__container'>
-                    <img
-                      src={`${img_url + movie.poster_path}`}
-                      alt='movie_poster'
-                      className='movie__poster'
-                    />
+                  <button
+                    className='overviewButton'
+                    onClick={() => displayOverview(movie)}
+                  >
+                    Show Overview
+                  </button>
 
-                    <p>{movie.title}</p>
-                    <p>Rating: {movie.vote_average}</p>
-                    <button
-                      className='overviewButton'
-                      onClick={() => displayOverview(movie)}
-                    >
-                      Show Overview
-                    </button>
-                  </div>
                   <div className='movie__overview' id={movie.id}>
+                    <p className='movie__title'>{movie.title}</p>
+                    <hr className='purpleHr' />
                     <p className='overview'>{movie.overview}</p>
+                    <hr className='purpleHr' />
+                    <p>Rating: {movie.vote_average}</p>
                   </div>
                 </div>
               );
@@ -129,7 +123,7 @@ function MovieList(props) {
             >
               Prev Page
             </button>
-            <p>{pageNumber}</p>
+            <p className='page__number'>{pageNumber}</p>
             <button
               className='incrementPage pageButton'
               onClick={incrementPage}

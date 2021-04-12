@@ -1,23 +1,28 @@
 nav {
   display: flex;
-  width: 100%;
   justify-content: space-evenly;
   align-items: center;
   height: 10vh;
-  width: 100vw;
-  background-color: #221f1f;
+  width: 90vw;
+  background-color: #1b1b1b;
   z-index: 100;
   color: white;
+  margin: 0 auto;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 5px 5px 30px black;
+  padding: 0 1rem;
 }
 
 .nav__logo {
+  color: #bc86fe;
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-style: italic;
   margin: 0 10px;
+  color: #bc86fe;
 }
 
 .searchbar__container {
@@ -27,12 +32,21 @@ nav {
 }
 
 .nav__searchButton {
-  background-color: #e50914;
+  background-color: #151515;
+  color: #bc86fe;
+  flex: 1;
+  transition: all 0.3s;
+  height: 49px;
+}
+
+.nav__searchBar {
+  flex: 6;
 }
 
 .nav__searchBar,
 .nav__searchButton {
   font-size: 1.5rem;
+  padding: 0.5rem;
 }
 
 .nav__searchBar:focus,
@@ -40,21 +54,15 @@ nav {
   outline: none;
 }
 
-.nav__searchBar {
-  width: 80%;
-  height: 40px;
-  border: none;
-}
-
 .nav__searchButton {
   border-radius: 0 20px 20px 0;
   border: none;
-  height: 43px;
 }
 
 .nav__searchButton:hover {
   cursor: pointer;
-  background-color: orange;
+  background-color: #bc86fe;
+  color: black;
 }
 
 @media only screen and (max-width: 768px) {
